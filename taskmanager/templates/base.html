@@ -18,14 +18,14 @@
 
     <header>
         <!-- Top navbar-->
-        <nav class="blue darken-1">
+        <nav class="indigo accent-4">
             <div class="nav-wrapper">
                 <a href="{{ url_for('home') }}" class="brand-logo">Task Manager</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="#">New Task</a></li>
-                    <li><a href="#">Categories</a></li>
+                    <li><a href="{{ url_for('categories') }}">Categories</a></li>
                 </ul>
             </div>
         </nav>
@@ -34,10 +34,26 @@
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#">New Task</a></li>
-            <li><a href="#">Categories</a></li>
+            <li><a href="{ url_for('categories') }}">Categories</a></li>
         </ul>
     </header>
 
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer indigo accent-4">
+        <div class="footer-copyright">
+            <div class="container">
+                For educational purposes only
+                <a class="white-text right" href="https://codeinstitute.net" target="_blank">&copy; Code Institute</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript links -->
     <!-- Compiled and minified JavaScript - Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
