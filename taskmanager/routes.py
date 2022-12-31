@@ -1,3 +1,6 @@
+"""
+importing required libraries and modules
+"""
 from flask import render_template, request, redirect, url_for
 from taskmanager import app, db
 from taskmanager.models import Category, Task
@@ -8,7 +11,8 @@ def home():
     """
     returns the tasks.html from templates
     """
-    return render_template("tasks.html")
+    tasks = list(Task.query.order_by(Task.id).all())
+    return render_template("tasks.html", tasks=tasks)
 
 
 @app.route("/categories")
