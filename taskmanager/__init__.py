@@ -33,3 +33,13 @@ else:
 db = SQLAlchemy(app)
 
 from taskmanager import routes  # noqa No Quality Assurance
+
+
+# ^ Custom import of routes from taskmanager will throw an error saying it
+# should be installed at the top of the file
+
+# As the routes file relies on both the app and db variables they must be
+# defined above where the routes are imported
+
+# If we tried to import the routes before defining the app and db variables we
+# would get circular import errors
