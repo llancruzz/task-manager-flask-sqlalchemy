@@ -1,8 +1,9 @@
 import os
+import re
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 if os.path.exists("env.py"):
-    import env  # noqa No Quality Assurance
+    import env  # noqa
 
 
 # ^ Imports the hidden environment variables from our 'env' package
@@ -21,7 +22,7 @@ if os.environ.get("DEVELOPMENT") == "True":
 else:
     uri = os.environ.get("DATABASE_URL")
     if uri.startswith("postgres://"):
-        uri = uri.replace("postgres://", "postgresql://", 1)
+        uri = uri.replace("postgres://",  "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
 
@@ -32,7 +33,7 @@ else:
 
 db = SQLAlchemy(app)
 
-from taskmanager import routes  # noqa No Quality Assurance
+from taskmanager import routes
 
 
 # ^ Custom import of routes from taskmanager will throw an error saying it
